@@ -45,11 +45,22 @@ const App = ({ clock, teams, period }) => {
       <header className="App-header">
         <h1 className="App-title">Scoreboard</h1>
       </header>
-      <div className="App-intro">
-        <Clock clock={clock} />
-        <Period period={period} />
-        <Team team={homeTeam} />
-        <Team team={awayTeam} />
+      <div className="scoreboard">
+        <div className="row">
+          <div className="col-12">
+            <Clock clock={clock} />
+            <Period period={period} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6">
+            <Team team={homeTeam} />
+          </div>
+          <div className="col-6">
+            <Team team={awayTeam} />
+          </div>
+        </div>
+
       </div>
       <div className="control-panel">
         <ControlPanel clock={clock} teams={teams} period={period}/>

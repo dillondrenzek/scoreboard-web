@@ -12,41 +12,41 @@ const initialState = [
   }
 ];
 
+const teamReducer = (state = {}, {type, data}) => {
+  switch (type) {
+    case INCREMENT_TEAM_SCORE: {
+      const score = state.score + data.amount;
+      return {
+        ...state,
+        score
+      };
+    }
+    case SET_TEAM_SCORE:{
+      const score = data.score;
+      return {
+        ...state,
+        score
+      }
+    }
+    default:
+      return state;
+  }
+}
+
 
 const teams = (state = initialState, { type, data }) => {
   switch (type) {
-
-
-    case INCREMENT_TEAM_SCORE: {
-      const { team, amount } = data;
-      const oldTeam = state[team];
-      const score = oldTeam.score + amount;
-      const newTeam = {
-        ...oldTeam,
-        score
-      };
-      let newTeams = [...state];
-      newTeams[team] = newTeam;
-      return newTeams;
-    }
-
+    case INCREMENT_TEAM_SCORE:
     case SET_TEAM_SCORE: {
-      const { team, score } = data;
+      const { team } = data;
       const oldTeam = state[team];
-      const newTeam = {
-        ...oldTeam,
-        score
-      };
       let newTeams = [...state];
-      newTeams[team] = newTeam;
+      newTeams[team] = teamReducer(oldTeam, {type, data});
       return newTeams;
     }
-
 
     default:
       return state;
-
-
   }
 
   return state;

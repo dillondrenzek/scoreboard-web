@@ -12,11 +12,13 @@ const ClockControl = ({
   onResetClock
 }) => {
   return (
-    <div>
+    <div className="col">
       <h4>Clock</h4>
-      <button onClick={() => onStartClock(clock)}>Start</button>
-      <button onClick={() => onStopClock()}>Stop</button>
-      <button onClick={() => onResetClock()}>Reset</button>
+      <div className="btn-group">
+        <button className="btn btn-success" onClick={() => onStartClock(clock)}>Start</button>
+        <button className="btn btn-danger" onClick={() => onStopClock()}>Stop</button>
+        <button className="btn btn-secondary" onClick={() => onResetClock()}>Reset</button>
+      </div>
     </div>
   );
 };

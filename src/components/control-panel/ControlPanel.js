@@ -8,9 +8,9 @@ import ClockControl from './controls/ClockControl';
 
 const ControlPanel = ({ teams, clock, period }) => {
   return (
-    <div>
-      {teams.map((team, i) => <TeamControl key={i} index={i} team={team}/>)}
-      <ClockControl clock={clock} />
+    <div className="row">
+      {teams.map((team, i) => <TeamControl className="col-4" key={i} index={i} team={team}/>)}
+      <ClockControl className="col-4" clock={clock} />
     </div>
   );
 };
