@@ -15,11 +15,22 @@ const ClockControl = ({
   return (
     <div>
       <h4>Clock</h4>
-      <button onClick={() => onStartClock(resolution)}>Start</button>
+      <button onClick={() => onStartClock(clock)}>Start</button>
       <button onClick={() => onStopClock()}>Stop</button>
       <button onClick={() => onResetClock()}>Reset</button>
     </div>
   );
+};
+
+const getDuration = (resolution) => {
+  switch (resolution) {
+    case ClockResolution.Seconds:
+      return 1000;
+    case ClockResolution.Tenths:
+      return 100;
+    default:
+      return 1000;
+  }
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -29,10 +40,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     // TODO: prevent second start click
-    onStartClock: (res) => {
-      const dur = (res === ClockResolution.Seconds) ? 1000 : 100;
-      const fn = () => dispatch(runClock(res));
-      let interval = setInterval(fn, dur);
+    onStartClock: ({_interval, resolution}) => {
+      const dur = getDuration(resolution);
+      const fn = () => dispatch(runClock(resolution));
+      const interval = setInterval(fn, dur);
       dispatch(startClock(interval));
     },
     onStopClock: () => {
