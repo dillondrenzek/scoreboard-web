@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { startClock, stopClock, runClock, ClockResolution } from '../../../actions';
 
 // TODO: when clock reaches 0, send stopClock action

@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-import teams from './teams';
 import { ClockResolution, START_CLOCK, STOP_CLOCK, RESET_CLOCK, RUN_CLOCK } from '../actions';
 
 // IDEA:

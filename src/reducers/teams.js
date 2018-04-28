@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { SET_TEAM_SCORE, INCREMENT_TEAM_SCORE } from '../actions';
 
 const initialState = [
@@ -44,12 +43,9 @@ const teams = (state = initialState, { type, data }) => {
       newTeams[team] = teamReducer(oldTeam, {type, data});
       return newTeams;
     }
-
     default:
       return state;
   }
-
-  return state;
 };
 
 const reducers = teams;

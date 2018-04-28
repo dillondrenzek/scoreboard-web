@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Clock from './components/clock/Clock';
@@ -45,7 +45,7 @@ const App = ({ clock, teams, period }) => {
       <header className="App-header">
         <h1 className="App-title">Scoreboard</h1>
       </header>
-      <div className="scoreboard">
+      <div className="scoreboard container-fluid">
         <div className="row">
           <div className="col-12">
             <Clock clock={clock} />
@@ -62,7 +62,7 @@ const App = ({ clock, teams, period }) => {
         </div>
 
       </div>
-      <div className="control-panel">
+      <div className="control-panel container">
         <ControlPanel clock={clock} teams={teams} period={period}/>
       </div>
     </div>

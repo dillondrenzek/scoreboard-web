@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { incrementTeamScore, setTeamScore } from '../../../actions';
 
 const TeamControl = ({
@@ -12,10 +11,12 @@ const TeamControl = ({
   return (
     <div>
       <h4>{team.name}</h4>
-      <button onClick={() => onIncrementScore(index, 1)}>+1</button>
-      <button onClick={() => onIncrementScore(index, 2)}>+2</button>
-      <button onClick={() => onIncrementScore(index, 3)}>+3</button>
-      <button onClick={() => onSetScore(index, 0)}>Reset</button>
+      <div className="btn-group">
+        <button className="btn btn-success" onClick={() => onIncrementScore(index, 1)}>+1</button>
+        <button className="btn btn-success" onClick={() => onIncrementScore(index, 2)}>+2</button>
+        <button className="btn btn-success" onClick={() => onIncrementScore(index, 3)}>+3</button>
+        <button className="btn btn-secondary" onClick={() => onSetScore(index, 0)}>Reset</button>
+      </div>
     </div>
   );
 };

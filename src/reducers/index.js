@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import teams from './teams';
 import clock from './clock';
-import { INCREMENT_TEAM_SCORE, START_CLOCK, STOP_CLOCK, RESET_CLOCK, RUN_CLOCK } from '../actions';
 
 const initialState = {
   period: {
