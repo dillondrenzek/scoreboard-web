@@ -3,19 +3,19 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { incrementTeamScore } from '../../actions';
 
+// const TeamControl = ({ team })
+
 const ControlPanel = ({ teams, clock, period, onIncrementScore }) => {
-  return (
-    <div>
-      <h4>{teams[0].name}</h4>
-      <button onClick={() => onIncrementScore(0, 1)}>+1</button>
-      <button onClick={() => onIncrementScore(0, 2)}>+2</button>
-      <button onClick={() => onIncrementScore(0, 3)}>+3</button>
-      <h4>{teams[1].name}</h4>
-      <button onClick={() => onIncrementScore(1, 1)}>+1</button>
-      <button onClick={() => onIncrementScore(1, 2)}>+2</button>
-      <button onClick={() => onIncrementScore(1, 3)}>+3</button>
-    </div>
-  );
+  return (<div>{teams.map((team, i) => {
+    return (
+      <div key={i}>
+        <h4>{team.name}</h4>
+        <button onClick={() => onIncrementScore(i, 1)}>+1</button>
+        <button onClick={() => onIncrementScore(i, 2)}>+2</button>
+        <button onClick={() => onIncrementScore(i, 3)}>+3</button>
+      </div>
+    );
+  })}</div>);
 };
 
 const mapStateToProps = (state, ownProps) => {

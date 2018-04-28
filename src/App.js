@@ -32,9 +32,16 @@ const Team = ({ team }) => {
 
 const App = ({ clock, teams, period }) => {
   clock = clock || { minutes: [0,0], seconds: [0,0], tenths: 0 };
-  const homeTeam = (teams) ? teams[0] : { name: 'Team A', score: 0 };
-  const awayTeam = (teams) ? teams[1] : { name: 'Team B', score: 0 };
   period = period || { value: 1, type: 'QTR' };
+  teams = teams || [
+    { name: 'Team A', score: 0 },
+    { name: 'Team B', score: 0 }
+  ];
+  const homeTeam = teams[0];
+  const awayTeam = teams[1];
+
+  console.log('homeTeam', homeTeam);
+  console.log('awayTeam', awayTeam);
 
   return (
     <div className="App">

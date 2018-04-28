@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import teams from './teams';
 import { INCREMENT_TEAM_SCORE } from '../actions';
 
 const initialState = {
@@ -24,26 +25,6 @@ const initialState = {
 };
 
 export const data = (state = initialState, action) => {
-  return state;
-};
-
-export const teams = (state = initialState.teams, { type, data }) => {
-  switch (type) {
-    case INCREMENT_TEAM_SCORE: {
-      const { team, amount } = data;
-      const oldTeam = state[team];
-      const newTeam = {
-        ...oldTeam,
-        score: oldTeam.score += amount
-      };
-      let newTeams = [...state];
-      newTeams[team] = newTeam;
-      return newTeams;
-    }
-    default:
-      return state;
-  }
-
   return state;
 };
 
