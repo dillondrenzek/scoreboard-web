@@ -30,7 +30,6 @@ export const teams = (state = initialState.teams, action) => {
   return state;
 };
 
-
 export const period = (state = initialState.period, action) => {
   return state;
 };
