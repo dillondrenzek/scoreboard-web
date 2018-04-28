@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { incrementTeamScore } from '../../actions';
+import { incrementTeamScore, setTeamScore } from '../../actions';
 
 // const TeamControl = ({ team })
 
-const ControlPanel = ({ teams, clock, period, onIncrementScore }) => {
+const ControlPanel = ({ teams, clock, period, onIncrementScore, onSetScore }) => {
   return (<div>{teams.map((team, i) => {
     return (
       <div key={i}>
@@ -13,6 +13,7 @@ const ControlPanel = ({ teams, clock, period, onIncrementScore }) => {
         <button onClick={() => onIncrementScore(i, 1)}>+1</button>
         <button onClick={() => onIncrementScore(i, 2)}>+2</button>
         <button onClick={() => onIncrementScore(i, 3)}>+3</button>
+        <button onClick={() => onSetScore(i, 0)}>Reset</button>
       </div>
     );
   })}</div>);
@@ -26,6 +27,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onIncrementScore: (teamIndex, amount) => {
       dispatch(incrementTeamScore(teamIndex, amount));
+    },
+    onSetScore: (teamIndex, score) => {
+      dispatch(setTeamScore(teamIndex, score));
     }
   };
 };

@@ -40,9 +40,6 @@ const App = ({ clock, teams, period }) => {
   const homeTeam = teams[0];
   const awayTeam = teams[1];
 
-  console.log('homeTeam', homeTeam);
-  console.log('awayTeam', awayTeam);
-
   return (
     <div className="App">
       <header className="App-header">

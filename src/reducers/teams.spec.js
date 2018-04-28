@@ -7,6 +7,39 @@ import teamsReducer from './teams';
 import * as Actions from '../actions';
 
 describe('teams', () => {
+  describe('setTeamScore', () => {
+
+    let preState,
+      action,
+      postState,
+      result,
+      expected;
+
+
+    beforeEach(() => {
+      preState = [
+        { name: 'test a', score: 0 },
+        { name: 'test b', score: 0 }
+      ];
+      expected = 33;
+      action = Actions.setTeamScore(0, expected);
+      postState = teamsReducer(preState, action);
+      result = postState[0].score;
+    });
+
+    it('should return new array', () => {
+      expect(postState).not.toBe(preState);
+    });
+
+    it('should return new object', () => {
+      expect(postState[0]).not.toBe(preState[0]);
+    });
+
+    it('should return the right result', () => {
+      expect(result).toEqual(expected);
+    });
+
+  });
   describe('incrementTeamScore', () => {
 
     let preState,
