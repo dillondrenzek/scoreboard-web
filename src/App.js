@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Clock from './components/clock/Clock';
+import ControlPanel from './components/control-panel/ControlPanel';
 import './App.css';
 
 const Period = ({ period }) => (
@@ -45,6 +46,9 @@ const App = ({ clock, teams, period }) => {
         <Period period={period} />
         <Team team={homeTeam} />
         <Team team={awayTeam} />
+      </div>
+      <div className="control-panel">
+        <ControlPanel clock={clock} teams={teams} period={period}/>
       </div>
     </div>
   );
