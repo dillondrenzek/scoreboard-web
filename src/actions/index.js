@@ -22,15 +22,32 @@ export const incrementTeamScore = (team, amount) => ({
 
 
 // Clock
+export const ClockResolution = {
+  Tenths: 'tenths',
+  Seconds: 'seconds'
+};
+
 export const START_CLOCK = 'START_CLOCK';
 export const STOP_CLOCK = 'STOP_CLOCK';
 export const RESET_CLOCK = 'RESET_CLOCK';
+export const RUN_CLOCK = 'RUN_CLOCK';
 export const SET_CLOCK_TIME_REMAINING = 'SET_CLOCK_TIME_REMAINING';
 export const SET_CLOCK_TIME_TOTAL = 'SET_CLOCK_TIME_TOTAL';
 // ??
-export const startClock = (clock) => ({});
-export const stopClock = (clock) => ({});
-export const resetClock = (clock) => ({});
+export const startClock = (interval) => ({
+  type: START_CLOCK,
+  data: interval
+});
+export const stopClock = (clock) => ({
+  type: STOP_CLOCK
+});
+export const resetClock = (clock) => ({
+  type: RESET_CLOCK
+});
+export const runClock = (resolution) => ({
+  type: RUN_CLOCK,
+  data: resolution
+});
 
 // Timer
 export const SET_MINUTE = 'SET_MINUTE'; // [int, int]
