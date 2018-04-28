@@ -2,6 +2,23 @@ import { combineReducers } from 'redux';
 import teams from './teams';
 import { ClockResolution, START_CLOCK, STOP_CLOCK, RESET_CLOCK, RUN_CLOCK } from '../actions';
 
+// IDEA:
+// const initialState = {
+  // total: {
+  //   minutes: 15,
+  //   seconds: 0,
+  //   tenths: 0,
+  // },
+  // remaining: {
+  //   minutes: 15,
+  //   seconds: 0,
+  //   tenths: 0,
+  // },
+  // resolution: ClockResolution.Tenths,
+  // interval: null
+// };
+
+
 const initialState = {
   minutes: 1,
   seconds: 0,
@@ -9,8 +26,6 @@ const initialState = {
   resolution: ClockResolution.Tenths,
   _interval: null
 };
-
-const CLOCK_RESOLUTION = 100;
 
 const _runTenths = (clock) => {
   let tenths, newClock;

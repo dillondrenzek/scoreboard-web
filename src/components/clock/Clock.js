@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { ClockResolution } from '../../actions';
 
 const Clock = ({ clock }) => {
-  let { minutes, seconds, tenths } = clock;
-  minutes = (minutes < 10) ? '0' + minutes : minutes;
+  let { minutes, seconds, tenths, resolution } = clock;
+
+  minutes = (minutes > 10 || minutes === 0)
+    ? minutes
+    : '0' + minutes;
+
   seconds = (seconds < 10) ? '0' + seconds : seconds;
+  const showTenths = resolution === ClockResolution.Tenths;
   return (
-    <div>
+    <h2>
       <span>{minutes}</span>
       <span>:</span>
       <span>{seconds}</span>
-      <span>.</span>
-      <span>{tenths}</span>
-    </div>
+      {(showTenths) ? (<span>.</span>) : ''}
+      {(showTenths) ? (<span>{tenths}</span>) : ''}
+    </h2>
   );
 };
 

@@ -11,7 +11,6 @@ const ClockControl = ({
   onStopClock,
   onResetClock
 }) => {
-  const {resolution} = clock;
   return (
     <div>
       <h4>Clock</h4>
@@ -39,8 +38,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    // TODO: prevent second start click
     onStartClock: ({_interval, resolution}) => {
+      // if we already have an interval, don't start another one
+      if (_interval) return;
       const dur = getDuration(resolution);
       const fn = () => dispatch(runClock(resolution));
       const interval = setInterval(fn, dur);
