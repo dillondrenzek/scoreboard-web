@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { incrementTeamScore, setTeamScore, startClock, stopClock, runClock, ClockResolution } from '../../actions';
 
-// const TeamControl = ({ team })
+// TODO: when clock reaches 0, send stopClock action
 
 const ControlPanel = ({
   teams,

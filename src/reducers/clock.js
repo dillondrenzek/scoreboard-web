@@ -3,7 +3,7 @@ import teams from './teams';
 import { ClockResolution, START_CLOCK, STOP_CLOCK, RESET_CLOCK, RUN_CLOCK } from '../actions';
 
 const initialState = {
-  minutes: 10,
+  minutes: 1,
   seconds: 0,
   tenths: 0,
   resolution: ClockResolution.Tenths,
@@ -12,25 +12,50 @@ const initialState = {
 
 const CLOCK_RESOLUTION = 100;
 
+const _runTenths = (clock) => {
+  let tenths, newClock;
+  if (clock.tenths === 0) {
+    tenths = 9;
+    newClock = _runSeconds(clock);
+  } else {
+    tenths = clock.tenths - 1;
+    newClock = {...clock};
+  }
+  return {
+    ...newClock,
+    tenths
+  };
+};
+
+const _runSeconds = (clock) => {
+  let seconds, newClock;
+  if (clock.seconds === 0) {
+    seconds = 59;
+    newClock = _runMinutes(clock);
+  } else {
+    seconds = clock.seconds - 1;
+    newClock = {...clock};
+  }
+  return {
+    ...newClock,
+    seconds
+  };
+};
+
+const _runMinutes = (clock) => {
+  return {
+    ...clock,
+    minutes: clock.minutes - 1
+  };
+};
+
 const _runClock = (clock, res) => {
   switch (res) {
-    case ClockResolution.Tenths:{
-      const tenths = (clock.tenths === 0) ? 9 : clock.tenths - 1;
-      const seconds = (clock.tenths === 0) ? clock.seconds - 1 : clock.seconds;
-      return {
-        ...clock,
-        seconds,
-        tenths
-      };
+    case ClockResolution.Tenths: {
+      return _runTenths(clock);
     }
-    case ClockResolution.Seconds:{
-      const seconds = (clock.seconds === 0) ? 59 : clock.seconds - 1;
-      const minutes = (clock.seconds === 0) ? clock.minutes - 1 : clock.minutes;
-      return {
-        ...clock,
-        minutes,
-        seconds
-      };
+    case ClockResolution.Seconds: {
+      return _runSeconds(clock);
     }
     default:
       return clock;
