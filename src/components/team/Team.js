@@ -1,22 +1,24 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
-const TeamName = ({ name }) => (
-  <div>{ name }</div>
-);
+class Team extends Component {
 
-const TeamScore = ({ score }) => (
-  <div>{ score }</div>
-);
+    renderTeamScore(score) {
+        return <div>{ score }</div>;
+    }
 
-const Team = ({ team }) => {
-  const {name, score} = team;
-  return (
-    <div>
-      <TeamName name={ name }/>
-      <TeamScore score={ score }/>
-    </div>
-  );
-};
+    renderTeamName(name) {
+        return <div>{ name }</div>;
+    }
+
+    render() {
+        const { team } = this.props;
+        const { name, score } = team;
+
+        return <div className="Team">
+            { this.renderTeamName(name) }
+            { this.renderTeamScore(score) }
+            </div>;
+    }
+}
 
 export default Team;
