@@ -2,21 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { incrementTeamScore, setTeamScore } from '../../../actions';
 
+import { Button, ButtonGroup } from '../../shared';
+
+
+
 const TeamControl = ({
   team,
   index,
-  onIncrementScore,
-  onSetScore
+  incrementTeamScore,
+  setTeamScore
 }) => {
   return (
-    <div>
+    <div className='TeamControl'>
       <h4>{team.name}</h4>
-      <div className="btn-group">
-        <button className="btn btn-success" onClick={() => onIncrementScore(index, 1)}>+1</button>
-        <button className="btn btn-success" onClick={() => onIncrementScore(index, 2)}>+2</button>
-        <button className="btn btn-success" onClick={() => onIncrementScore(index, 3)}>+3</button>
-        <button className="btn btn-secondary" onClick={() => onSetScore(index, 0)}>Reset</button>
-      </div>
+      <ButtonGroup>
+        <Button type='success' onClick={() => incrementTeamScore(index, 1)}>+1</Button>
+        <Button type='success' onClick={() => incrementTeamScore(index, 2)}>+2</Button>
+        <Button type='success' onClick={() => incrementTeamScore(index, 3)}>+3</Button>
+        <Button type='secondary' onClick={() => setTeamScore(index, 0)}>Reset</Button>
+      </ButtonGroup>
     </div>
   );
 };
@@ -27,10 +31,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onIncrementScore: (teamIndex, amount) => {
+    incrementTeamScore: (teamIndex, amount) => {
       dispatch(incrementTeamScore(teamIndex, amount));
     },
-    onSetScore: (teamIndex, score) => {
+    setTeamScore: (teamIndex, score) => {
       dispatch(setTeamScore(teamIndex, score));
     },
   };
